@@ -1,0 +1,183 @@
+import React, { useEffect, useState } from "react";
+import { BiPurchaseTagAlt } from "react-icons/bi";
+import { FaRegStar, FaShoppingCart } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
+import ReviewCard from "../Card/ReviewCard";
+import Card from "../Card/Card";
+
+const ProductDetails = () => {
+  const { id } = useParams();
+  const [productDetails, setProductDetails] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [categoryProducts, setCategoryProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://e-commerce-backened-4fih.onrender.com/products/${id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProductDetails(data);
+        setCategory(data.category);
+        // console.log(data);
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      })
+      .catch((err) => console.error("Error fetching:", err));
+  }, [id]);
+
+  useEffect(() => {
+    if (category) {
+      fetch(
+        `https://e-commerce-backened-4fih.onrender.com/categories/${category}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setCategoryProducts(data.products);
+          console.log(data);
+        });
+    }
+  }, [category]);
+
+  const status = productDetails?.availabilityStatus?.toLowerCase();
+
+  const stock = status?.includes("low")
+    ? "Low Stock"
+    : status?.includes("in")
+    ? "In Stock"
+    : "Out of Stock";
+
+  const bgColor =
+    stock === "Low Stock"
+      ? "bg-red-500"
+      : stock === "In Stock"
+      ? "bg-blue-500"
+      : "bg-gray-400";
+
+  return (
+    <div>
+      {productDetails ? (
+        <div>
+          <div className="flex justify-around gap-0 bg-white w-full h-screen">
+            <div className="w-[40%]">
+              <div className="flex justify-center">
+                <div className="w-[10%] mt-8">
+                  <img
+                    src={productDetails?.thumbnail}
+                    alt=""
+                    className="w-[350px]  bg-white m-auto"
+                  />
+                </div>
+                <img
+                  src={productDetails?.images?.[0]}
+                  alt=""
+                  className="w-[400px] bg-white border border-[#d5af34] my-2"
+                />
+              </div>
+              <div className="flex justify-center gap-4 mb-4">
+                <button className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md">
+                  <FaShoppingCart />
+                  Add to Cart
+                </button>
+                <button className="bg-[#fb641b] text-white px-10 py-4 flex justify-center items-center gap-3 rounded-md">
+                  <BiPurchaseTagAlt />
+                  Buy Now
+                </button>
+              </div>
+            </div>
+            <div className="w-[60%] my-4 flex justify-center overflow-auto scrollbar-hide">
+              <div>
+                <h3>
+                  {productDetails?.title}
+                  {productDetails?.description}
+                </h3>
+                <div className="flex gap-3">
+                  <p className="flex items-center gap-1 bg-green-500 text-white w-fit py-1 px-2 rounded-xl text-xs">
+                    {productDetails?.rating}
+                    <FaRegStar />
+                  </p>
+                  <p
+                    className={`items-center gap-1 text-white w-fit py-1 px-2 rounded-xl text-xs ${bgColor}`}
+                  >
+                    {stock}
+                  </p>
+                </div>
+                <p className="font-bold text-2xl my-2">
+                  ${productDetails?.price}
+                </p>
+                <p className="bg-pink-300 w-fit text-white px-2 rounded-xl">
+                  {productDetails?.tags[0]}
+                </p>
+
+                <h2 className="text-xl font-bold my-4">Specification</h2>
+                <h4 className="font-semibold">In The Box</h4>
+                <p>
+                  <span className="text-gray-500">Brand </span>{" "}
+                  {productDetails?.brand}
+                </p>
+                <p>
+                  <span className="text-gray-500">Weight </span>
+                  {productDetails?.weight}
+                </p>
+                <h4 className="font-semibold">Dimensions</h4>
+                <p>
+                  <span className="text-gray-500">Width </span>
+                  {productDetails?.dimensions?.width}
+                </p>
+                <p>
+                  <span className="text-gray-500">Height </span>
+                  {productDetails?.dimensions?.height}
+                </p>
+                <p>
+                  <span className="text-gray-500">Depth </span>
+                  {productDetails?.dimensions?.depth}
+                </p>
+                <p className="text-gray-500 font-semibold">
+                  Warranty{"   "}
+                  <span className="text-black font-medium">
+                    {productDetails?.warrantyInformation}
+                  </span>
+                </p>
+                <h2 className="text-xl font-bold my-4">Reviews:</h2>
+                <ul>
+                  {productDetails?.reviews?.map((review, rating) => {
+                    return <ReviewCard review={review} rating={rating} />;
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="text-center">
+              <h1 className="text-3xl font-bold my-8 text-[#d4af33]">
+                Similar Products
+              </h1>
+            </div>
+            <div>
+              <ul className="flex justify-center flex-wrap">
+                {categoryProducts.map((data) => {
+                  return (
+                    <li>
+                      <Link to={`/products/${data?.id}`} key={id}>
+                        <Card data={data} />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p className="text-center text-[#d4af33] font-extrabold text-2xl h-screen">
+          Loading product details...
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default ProductDetails;
