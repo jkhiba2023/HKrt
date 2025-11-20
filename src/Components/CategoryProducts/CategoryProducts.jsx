@@ -7,17 +7,19 @@ const CategoryProducts = () => {
 
   // const navigate = useNavigate();
 
-  const { categories } = useParams();
+  const { category } = useParams();
 
   // useEffect(() => {
   //   if (!localStorage.getItem("username")) {
   //     navigate("/login");
   //   }
   // }, [navigate]);
-  console.log(categories);
+  console.log(category);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/category/${categories}`)
+    fetch(
+      `https://e-commerce-backened-4fih.onrender.com/categories/${category}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
