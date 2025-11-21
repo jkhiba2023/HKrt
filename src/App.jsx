@@ -5,6 +5,7 @@ import Login from "./Components/Login/Login";
 import Navigation from "./Components/Navigation/Navigation";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import Products from "./Components/Products/Products";
+import SignUp from "./Components/SignUp/SignUp";
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
 
@@ -21,6 +22,8 @@ function App() {
         />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/login" element={<Login />} />
+
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       <Footer />
     </div>

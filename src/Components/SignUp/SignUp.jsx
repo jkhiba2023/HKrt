@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [user, setUser] = useState({ username: "", password: "" });
+const SignUp = () => {
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("loginData", JSON.stringify(user));
-    console.log(user);
+
+    if (data.password !== data.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Save signup data
+    localStorage.setItem("signupData", JSON.stringify(data));
+
+    alert("Registration Successful!");
   };
 
   return (
@@ -21,7 +32,7 @@ const Login = () => {
         className="flex flex-col bg-white w-[400px] p-6 rounded-lg shadow-lg space-y-4"
       >
         <h2 className="text-2xl font-semibold text-center text-gray-800">
-          Login
+          New Registration
         </h2>
 
         {/* Username */}
@@ -33,9 +44,9 @@ const Login = () => {
             type="text"
             autoComplete="off"
             name="username"
-            placeholder="Enter your username/email ID"
+            placeholder="Enter First Name & Last Two Digit Phone no"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
-            value={user.username}
+            value={data.username}
             onChange={handleChange}
             required
           />
@@ -52,30 +63,42 @@ const Login = () => {
             name="password"
             placeholder="Enter your password"
             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
-            value={user.password}
+            value={data.password}
             onChange={handleChange}
             required
           />
-          <div className="flex justify-center items-center mt-3">
-            <p className="text-xs pr-1">Forgot your password?</p>
-            <Link to={"/signup"}>
-              <span className="text-xs text-blue-700">
-                Sign up for new Customer!!!!
-              </span>
-            </Link>
-          </div>
         </div>
 
-        {/* Submit Button */}
+        {/* Confirm Password */}
+        <div className="flex flex-col">
+          <label
+            htmlFor="confirmPassword"
+            className="mb-1 text-gray-700 font-medium"
+          >
+            Re-Enter Password
+          </label>
+          <input
+            type="password"
+            autoComplete="off"
+            name="confirmPassword"
+            placeholder="Re-Enter your password"
+            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
+            value={data.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Submit */}
         <button
           type="submit"
           className="bg-[#d4af33] text-white font-semibold py-2 rounded-md hover:bg-[#b38f2d] transition-colors"
         >
-          Log In
+          Sign Up
         </button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
