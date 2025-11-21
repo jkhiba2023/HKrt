@@ -50,7 +50,7 @@ const Home = () => {
       <div>
         <h2 className="text-center text-4xl my-5 text-[#d4af33]">Categories</h2>
 
-        <div className="bg-gray-100 rounded-xl shadow-md m-5 p-6">
+        <div className="bg-gray-200 rounded-xl shadow-xl m-5 p-6">
           <ul className="flex flex-wrap justify-around items-center gap-2.5">
             {categories.map((data, id) => {
               return (
