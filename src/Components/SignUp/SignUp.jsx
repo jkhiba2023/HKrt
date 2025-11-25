@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [data, setData] = useState({
     username: "",
     password: "",
-    confirmPassword: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -13,16 +15,23 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    fetch("https://e-commerce-backened-4fih.onrender.com/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: data.username,
+        password: data.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((err) => console.log("error", err));
 
-    if (data.password !== data.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    // Save signup data
-    localStorage.setItem("signupData", JSON.stringify(data));
-
-    alert("Registration Successful!");
+    setData({ username: "", password: "" });
+    navigate("/login");
   };
 
   return (
@@ -35,7 +44,6 @@ const SignUp = () => {
           New Registration
         </h2>
 
-        {/* Username */}
         <div className="flex flex-col">
           <label htmlFor="username" className="mb-1 text-gray-700 font-medium">
             Username
@@ -45,14 +53,13 @@ const SignUp = () => {
             autoComplete="off"
             name="username"
             placeholder="Enter First Name & Last Two Digit Phone no"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
+            className="border border-gray-300 text-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
             value={data.username}
             onChange={handleChange}
             required
           />
         </div>
 
-        {/* Password */}
         <div className="flex flex-col">
           <label htmlFor="password" className="mb-1 text-gray-700 font-medium">
             Password
@@ -62,34 +69,13 @@ const SignUp = () => {
             autoComplete="off"
             name="password"
             placeholder="Enter your password"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
+            className="border border-gray-300 text-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
             value={data.password}
             onChange={handleChange}
             required
           />
         </div>
 
-        {/* Confirm Password */}
-        <div className="flex flex-col">
-          <label
-            htmlFor="confirmPassword"
-            className="mb-1 text-gray-700 font-medium"
-          >
-            Re-Enter Password
-          </label>
-          <input
-            type="password"
-            autoComplete="off"
-            name="confirmPassword"
-            placeholder="Re-Enter your password"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
-            value={data.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Submit */}
         <button
           type="submit"
           className="bg-[#d4af33] text-white font-semibold py-2 rounded-md hover:bg-[#b38f2d] transition-colors"

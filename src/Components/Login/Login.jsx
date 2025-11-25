@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -10,9 +11,27 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("loginData", JSON.stringify(user));
+    fetch("https://e-commerce-backened-4fih.onrender.com/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: user.username,
+        password: user.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+    navigate("/");
     console.log(user);
   };
+
+  const Login = user ? "user.username" : "Log In";
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -34,7 +53,7 @@ const Login = () => {
             autoComplete="off"
             name="username"
             placeholder="Enter your username/email ID"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
+            className="border border-gray-300 text-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
             value={user.username}
             onChange={handleChange}
             required
@@ -51,7 +70,7 @@ const Login = () => {
             autoComplete="off"
             name="password"
             placeholder="Enter your password"
-            className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
+            className="border border-gray-300 text-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-[#d4af33]"
             value={user.password}
             onChange={handleChange}
             required
@@ -71,7 +90,7 @@ const Login = () => {
           type="submit"
           className="bg-[#d4af33] text-white font-semibold py-2 rounded-md hover:bg-[#b38f2d] transition-colors"
         >
-          Log In
+          {Login}
         </button>
       </form>
     </div>
