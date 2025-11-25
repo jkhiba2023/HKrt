@@ -22,6 +22,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
+        localStorage.setItem("username", data.username);
         console.log(data);
       })
       .catch((err) => {
@@ -43,7 +44,6 @@ const Login = () => {
           Login
         </h2>
 
-        {/* Username */}
         <div className="flex flex-col">
           <label htmlFor="username" className="mb-1 text-gray-700 font-medium">
             Username
@@ -60,7 +60,6 @@ const Login = () => {
           />
         </div>
 
-        {/* Password */}
         <div className="flex flex-col">
           <label htmlFor="password" className="mb-1 text-gray-700 font-medium">
             Password
@@ -85,7 +84,6 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="bg-[#d4af33] text-white font-semibold py-2 rounded-md hover:bg-[#b38f2d] transition-colors"

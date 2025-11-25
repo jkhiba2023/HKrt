@@ -26,6 +26,7 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        alert("You Have Sign Up Successfully!!!");
         console.log(data);
       })
       .catch((err) => console.log("error", err));
