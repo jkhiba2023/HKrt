@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     fetch("https://e-commerce-backened-4fih.onrender.com/categories")

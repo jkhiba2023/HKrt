@@ -32,8 +32,6 @@ const Login = () => {
     console.log(user);
   };
 
-  const Login = user ? "user.username" : "Log In";
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
@@ -88,7 +86,7 @@ const Login = () => {
           type="submit"
           className="bg-[#d4af33] text-white font-semibold py-2 rounded-md hover:bg-[#b38f2d] transition-colors"
         >
-          {Login}
+          Log In
         </button>
       </form>
     </div>
