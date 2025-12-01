@@ -1,3 +1,4 @@
+import CartList from "./Components/Card/CartList";
 import CategoryProducts from "./Components/CategoryProducts/CategoryProducts";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Components/Home/Home";
@@ -27,11 +28,12 @@ function App() {
           element={<CategoryProducts />}
         />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<CartList />} />
         <Route path="/login" element={<Login />} />
 
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-      <Footer />
+      {isNavbarVisible && <Footer />}
     </div>
   );
 }

@@ -5,15 +5,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const CategoryProducts = () => {
   const [products, setProducts] = useState([]);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { category } = useParams();
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("username")) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    if (!localStorage.getItem("username")) {
+      navigate("/login");
+    }
+  }, [navigate]);
   console.log(category);
 
   useEffect(() => {

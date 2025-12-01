@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { FaRegStar, FaShoppingCart } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ReviewCard from "../Card/ReviewCard";
 import Card from "../Card/Card";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState(null);
   const [category, setCategory] = useState(null);
   const [categoryProducts, setCategoryProducts] = useState([]);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleAddProduct = () => {
+    dispatch({
+      type: "ADD_PRODUCT",
+      payload: productDetails,
+    });
+  };
+
+  useEffect(() => {
+    if (!localStorage.getItem("username")) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     fetch(`https://e-commerce-backened-4fih.onrender.com/products/${id}`)
@@ -78,7 +95,10 @@ const ProductDetails = () => {
                 />
               </div>
               <div className="flex justify-center gap-4 mb-4">
-                <button className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md">
+                <button
+                  onClick={handleAddProduct}
+                  className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md"
+                >
                   <FaShoppingCart />
                   Add to Cart
                 </button>

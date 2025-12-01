@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/HK.png";
 import { BsCart4 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
   const [userName, setuserName] = useState("");
@@ -9,6 +10,9 @@ const Navigation = () => {
     const userName = localStorage.getItem("username");
     setuserName(userName);
   }, [userName]);
+
+  const quantity = useSelector((state) => state.cartQuantity);
+
   console.log("username", userName);
   return (
     <div className="flex justify-between items-center w-full h-20 border-b bg-[#ffffff] border-[#d4af33] px-4 mx-auto">
@@ -37,9 +41,12 @@ const Navigation = () => {
             {userName && <button>Log out</button>}
           </li>
         </Link>
-        <li className="flex items-center">
-          <BsCart4 size={30} />
-        </li>
+        <Link to="/cart">
+          <li className="flex items-center">
+            <BsCart4 size={30} />
+            {quantity}
+          </li>
+        </Link>
       </ul>
     </div>
   );

@@ -5,13 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!localStorage.getItem("username")) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    if (!localStorage.getItem("username")) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     fetch("https://e-commerce-backened-4fih.onrender.com/products")
