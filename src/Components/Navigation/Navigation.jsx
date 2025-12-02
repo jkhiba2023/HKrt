@@ -3,13 +3,21 @@ import logo from "../../assets/HK.png";
 import { BsCart4 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { IoIosLogOut } from "react-icons/io";
 
 const Navigation = () => {
   const [userName, setuserName] = useState("");
+
   useEffect(() => {
     const userName = localStorage.getItem("username");
     setuserName(userName);
   }, [userName]);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("username");
+    setuserName("");
+    navigator("/login");
+  };
 
   const quantity = useSelector((state) => state.cartQuantity);
 
@@ -38,9 +46,22 @@ const Navigation = () => {
         <Link to="/login">
           <li className="bg-[#d4af33] text-[#FFFFFF] px-6 py-2 rounded-3xl">
             {userName ? userName : "Log In"}
-            {userName && <button>Log out</button>}
           </li>
         </Link>
+
+        {userName && (
+          <li className="bg-[#d4af33] text-[#FFFFFF] px-6 py-2 rounded-3xl">
+            {userName && (
+              <button
+                onClick={handleLogOut}
+                className="flex justify-center items-center"
+              >
+                <IoIosLogOut size={22} />
+              </button>
+            )}
+          </li>
+        )}
+
         <Link to="/cart">
           <li className="flex items-center">
             <BsCart4 size={30} />
