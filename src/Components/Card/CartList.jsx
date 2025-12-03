@@ -24,14 +24,17 @@ const CartList = () => {
 
   if (cartItems.length === 0) {
     return (
-      <p>
-        cart is empty add some <Link></Link>
+      <p className="h-screen flex items-center justify-center font-extrabold text-3xl">
+        Your Cart is Empty. Please Add Some Product By Click on{" "}
+        <Link to={"/products"} className="text-blue-600 ml-1.5">
+          Product
+        </Link>
       </p>
     );
   }
 
   return (
-    <ul className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-4 space-y-2">
+    <ul className="w-full max-w-3xl mx-auto bg-white shadow-xl h-screen rounded-lg p-4 space-y-2">
       <h2 className="flex justify-center font-extrabold text-2xl text-[#d5af34]">
         Cart List
       </h2>
