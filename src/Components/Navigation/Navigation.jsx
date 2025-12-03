@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/HK.png";
 import { BsCart4 } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoIosLogOut } from "react-icons/io";
 
@@ -11,7 +11,7 @@ const Navigation = () => {
   useEffect(() => {
     const userName = localStorage.getItem("username");
     setuserName(userName);
-  }, [userName]);
+  }, []);
 
   const handleLogOut = () => {
     localStorage.removeItem("username");
@@ -63,9 +63,11 @@ const Navigation = () => {
         )}
 
         <Link to="/cart">
-          <li className="flex items-center">
+          <li className="flex justify-center relative">
             <BsCart4 size={30} />
-            {quantity}
+            <p className="absolute bottom-2.5 font-bold text-amber-600">
+              {quantity}
+            </p>
           </li>
         </Link>
       </ul>

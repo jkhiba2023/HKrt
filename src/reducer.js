@@ -1,5 +1,5 @@
 const initialState = {
-  cartQuantity: 0,
+  cartQuantity: null,
   cartProducts: []
 }
 

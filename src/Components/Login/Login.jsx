@@ -24,11 +24,11 @@ const Login = () => {
         setUser(data);
         localStorage.setItem("username", data.username);
         console.log(data);
+        navigate("/");
       })
       .catch((err) => {
         console.log("error", err);
       });
-    navigate("/");
     console.log(user);
   };
 

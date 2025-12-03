@@ -1,12 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CartList = () => {
   const cartItems = useSelector((state) => state.cartProducts);
 
-  const totalPrice = cartItems.reduce((accumulator, currentItem) => {
-    return accumulator + currentItem.price;
-  }, 0);
+  // const totalPrice = cartItems.reduce((accumulator, currentItem) => {
+  //   return accumulator + currentItem.price;
+  // }, 0);
+
+  console.log("first", cartItems);
+
+  const totalPrice = (arr) => {
+    let sum = 0;
+    if (cartItems.length > 0) {
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr[i].price;
+      }
+    }
+
+    return sum.toFixed(2);
+  };
+
+  if (cartItems.length === 0) {
+    return (
+      <p>
+        cart is empty add some <Link></Link>
+      </p>
+    );
+  }
 
   return (
     <ul className="w-full max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-4 space-y-2">
@@ -34,7 +56,9 @@ const CartList = () => {
 
       <div className="flex justify-end items-center pt-3">
         <p className="text-lg font-bold mr-3 text-[#d5af34]">Total:</p>
-        <p className="text-xl font-bold text-amber-600">${totalPrice}</p>
+        <p className="text-xl font-bold text-amber-600">
+          ${totalPrice(cartItems)}
+        </p>
       </div>
     </ul>
   );
