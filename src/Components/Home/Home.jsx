@@ -23,9 +23,9 @@ const Home = () => {
     <div className="flex flex-col justify-center items-center min-h-screen w-full bg-gray-100 overflow-hidden">
       <img src={img1} alt="Home" className="w-full h-auto object-contain" />
 
-      <div className="flex justify-center items-center w-full bg-amber-200 h-10 m-auto">
+      <div className="flex justify-center items-center md:w-full lg:w-full bg-amber-200 h-10 m-auto">
         <div className="flex p-5 gap-5 text-sm sm:text-base">
-          <p className="flex justify-center items-center gap-2">
+          <p className="flex justify-center items-center gap-2 md:text-[12px]">
             <GiReturnArrow />7 Days Easy Return
           </p>
           |
