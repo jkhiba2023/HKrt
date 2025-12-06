@@ -29,12 +29,12 @@ const CategoryProducts = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h2 className="text-3xl font-bold mb-6 text-center text-[#d4af33]">
-        CATEGOTRY 🛍️ Products
+    <div className="p-6 bg-gray-100 min-h-screen items-center">
+      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-center text-[#d4af33]">
+        CATEGOTRY 🛍️ PRODUCTS
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-2 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.length > 0 ? (
           products.map((data) => {
             return (

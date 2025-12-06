@@ -16,6 +16,18 @@ const Navigation = () => {
     setuserName(userName);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   const handleNavigation = (link) => {
     if (link) {
       navigate(link);
@@ -35,7 +47,7 @@ const Navigation = () => {
   return (
     <div className="flex gap-2 relative justify-between items-center w-full h-20 border-b bg-[#ffffff] border-[#d4af33] px-4 mx-auto">
       <Link to="/">
-        <img src={logo} alt="" className="w-[120px] h-[50px]" />
+        <img src={logo} alt="" className="w-[120px] h-[50px] md:w-[100px]" />
       </Link>
 
       <input
@@ -95,23 +107,22 @@ const Navigation = () => {
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
-        <div className="absolute right-0 top-0 bg-amber-800/45 h-screen w-full flex items-center justify-center opacity-80">
+        <div className="absolute right-0 top-0 bg-amber-900 h-screen w-full flex items-center justify-center opacity-80">
           <IoClose
-            className="absolute right-3 top-5 bg-amber-200 rounded-full p-2 text-black font-extrabold"
+            className="absolute right-3 top-5 bg-[#d4af33]/80 rounded-full p-2 text-white font-extrabold"
             size={42}
             onClick={() => setIsOpen(!isOpen)}
           />
-          <ul className="  items-center flex-col justify-center gap-12 lg:flex text-[#d4af33] cursor-pointer">
+          <Link to="/login" className="items-center absolute left-3 top-5">
+            <button className="bg-[#d4af33]/90 text-[#FFFFFF] px-5 py-2 rounded-3xl">
+              {userName ? userName : "Log In"}
+            </button>
+          </Link>
+          <ul className=" flex items-center flex-col justify-center gap-1 lg:flex text-[#d4af33] cursor-pointer mx-auto">
             {/* <Link to="/" > */}
             <li onClick={() => handleNavigation("/")}>Home</li>
             {/* </Link> */}
             <li onClick={() => handleNavigation("/products")}>Product</li>
-
-            <Link to="/login">
-              <li className="bg-[#d4af33] text-[#FFFFFF] px-6 py-2 rounded-3xl">
-                {userName ? userName : "Log In"}
-              </li>
-            </Link>
 
             {userName && (
               <li className="bg-[#d4af33] text-[#FFFFFF] px-6 py-2 rounded-3xl">
