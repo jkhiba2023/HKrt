@@ -24,23 +24,23 @@ const Home = () => {
       <img src={img1} alt="Home" className="w-full h-auto object-contain" />
 
       <div className="flex justify-center items-center w-full md:w-full lg:w-full bg-amber-200 h-10">
-        <div className="flex items-center justify-center text-wrap  md:gap-2 text-[10px] md:text-[12px] lg:text-[14px] mx-5">
-          <p className="flex justify-center items-center gap-2 ">
-            <GiReturnArrow />7 Days Easy Return
+        <div className="flex items-center justify-center text-wrap  md:gap-2  mx-5">
+          <p className="flex justify-center items-center text-[8px] md:text-[14px] gap-2 ">
+            <GiReturnArrow size={20} />7 Days Easy Return
           </p>
           <span className="px-2">|</span>
-          <p className="flex justify-center items-center gap-2">
-            <IoMdCash />
+          <p className="flex justify-center items-center text-[8px] md:text-[14px] gap-2">
+            <IoMdCash size={20} />
             Cash on Delivery
           </p>
           <span className="px-2">|</span>
-          <p className="flex justify-center items-center gap-2">
-            <MdAutoAwesome />
+          <p className="flex justify-center items-center text-[8px] md:text-[14px] gap-2">
+            <MdAutoAwesome size={20} />
             Best Product
           </p>
           <span className="px-2">|</span>
-          <p className="flex justify-center items-center gap-2">
-            <MdHighQuality />
+          <p className="flex justify-center items-center text-[8px] md:text-[14px]  gap-2">
+            <MdHighQuality size={20} />
             Best Quality
           </p>
         </div>
@@ -50,22 +50,22 @@ const Home = () => {
         <h2 className="text-center text-4xl my-5 text-[#d4af33]">Categories</h2>
 
         <div className="bg-gray-200 rounded-xl shadow-xl m-2 md:m-5 p-4  md:p-6">
-          <ul className="flex flex-wrap justify-around items-center gap-1 md:gap-2 lg:gap-4">
+          <ul className="flex flex-wrap items-stretch justify-around gap-1 md:gap-2 lg:gap-4">
             {categories.map((data, id) => {
               return (
                 <li
                   key={id}
-                  className="bg-white mb-5 w-[20%] p-2 md:p-4 rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                  className="bg-white mb-5 w-[25%] p-2 md:p-4 rounded-xl transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 >
                   <Link to={`/products/category/${data?.slug}`}>
-                    <div className="flex justify-center">
+                    <div className="flex items-center justify-between">
                       <img
                         src={ImgData[data?.name]}
                         alt={data?.name}
-                        className="min-h-10 md:max-h-24  object-contain"
+                        className="h-[40%] object-contain"
                       />
                     </div>
-                    <p className="flex justify-center font-medium text-[10px] md:text-xs  mt-2 text-center">
+                    <p className="flex justify-center px-4 text-[8px] font-bold md:text-[14px]  mt-2 text-center">
                       {data?.name}
                     </p>
                   </Link>

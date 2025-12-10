@@ -107,7 +107,7 @@ const Navigation = () => {
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen && (
-        <div className="absolute right-0 top-0 bg-amber-900 h-screen w-full flex items-center justify-center opacity-80">
+        <div className="absolute right-0 top-0 bg-amber-900 h-screen w-full flex items-center justify-center opacity-95">
           <IoClose
             className="absolute right-3 top-5 bg-[#d4af33]/80 rounded-full p-2 text-white font-extrabold"
             size={42}

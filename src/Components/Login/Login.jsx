@@ -38,7 +38,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="flex flex-col bg-white w-[400px] p-6 rounded-lg shadow-lg space-y-4"
       >
-        <h2 className="text-2xl font-semibold text-center text-gray-800">
+        <h2 className="lg:text-3xl md:text-2xl text-lg font-semibold text-center text-gray-800">
           Login
         </h2>
 

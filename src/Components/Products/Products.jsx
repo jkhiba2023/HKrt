@@ -34,7 +34,11 @@ const Products = () => {
         {products.length > 0 ? (
           products.map((data) => {
             return (
-              <Link to={`/products/${data.id}`} key={data.id}>
+              <Link
+                className="w-full"
+                to={`/products/${data.id}`}
+                key={data.id}
+              >
                 <Card data={data} />
               </Link>
             );
