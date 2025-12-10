@@ -78,39 +78,43 @@ const ProductDetails = () => {
     <div>
       {productDetails ? (
         <div>
-          <div className="flex justify-around gap-0 bg-white w-full h-screen">
-            <div className="w-[40%]">
+          <div className="flex justify-around gap-2 mt-5 bg-white w-full h-screen ">
+            <div className="w-full md:w-[50%]">
               <div className="flex justify-center">
-                <div className="w-[10%] mt-8">
+                <div className="w-1/4 md:w-1/4 mt-8">
                   <img
                     src={productDetails?.thumbnail}
                     alt=""
-                    className="w-[350px]  bg-white m-auto"
+                    className="w-full  bg-white m-auto"
                   />
                 </div>
-                <img
-                  src={productDetails?.images?.[0]}
-                  alt=""
-                  className="w-[400px] bg-white border border-[#d5af34] my-2"
-                />
-              </div>
-              <div className="flex justify-center gap-4 mb-4">
-                <button
-                  onClick={handleAddProduct}
-                  className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md"
-                >
-                  <FaShoppingCart />
-                  Add to Cart
-                </button>
-                <button className="bg-[#fb641b] text-white px-10 py-4 flex justify-center items-center gap-3 rounded-md">
-                  <BiPurchaseTagAlt />
-                  Buy Now
-                </button>
+                <div className="w-3/4 md:w-3/4">
+                  <div className="">
+                    <img
+                      src={productDetails?.images?.[0]}
+                      alt=""
+                      className="w-full max-w-[400px] bg-white border border-[#d5af34] my-2"
+                    />
+                  </div>
+                  <div className="flex justify-center items-center gap-4 mr-15">
+                    <button
+                      onClick={handleAddProduct}
+                      className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md"
+                    >
+                      <FaShoppingCart />
+                      Add to Cart
+                    </button>
+                    <button className="bg-[#fb641b] text-white px-10 py-4 flex justify-center items-center gap-3 rounded-md">
+                      <BiPurchaseTagAlt />
+                      Buy Now
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="w-[60%] my-4 flex justify-center overflow-auto scrollbar-hide">
+            <div className="w-full md:w-[50%] h-full my-6 md:mt-0 md:flex md:justify-center overflow-visible md:overflow-auto md:scrollbar-hide">
               <div>
-                <h3>
+                <h3 className="text-[18px]">
                   {productDetails?.title}
                   {productDetails?.description}
                 </h3>
@@ -170,18 +174,22 @@ const ProductDetails = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="md:mb-10">
             <div className="text-center">
               <h1 className="text-3xl font-bold my-8 text-[#d4af33]">
                 Similar Products
               </h1>
             </div>
             <div>
-              <ul className="flex justify-center flex-wrap">
+              <ul className="flex justify-center flex-wrap gap-3">
                 {categoryProducts.map((data) => {
                   return (
                     <li>
-                      <Link to={`/products/${data?.id}`} key={id}>
+                      <Link
+                        className="flex items-center justify-center"
+                        to={`/products/${data?.id}`}
+                        key={data?.id}
+                      >
                         <Card data={data} />
                       </Link>
                     </li>

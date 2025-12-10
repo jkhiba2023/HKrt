@@ -4,17 +4,17 @@ import { MdOutlineStarBorderPurple500 } from "react-icons/md";
 const Card = ({ data }) => {
   return (
     <div className="h-full w-full md:w-60 bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl mx-auto">
-      <div className="h-30 md:h-60 lg:h-60 w-full bg-[#d4af33] flex items-center justify-center overflow-hidden">
+      <div className="h-60 md:h-60 lg:h-60 w-full bg-[#d4af33] flex items-center justify-center overflow-hidden">
         <img
           src={data.images[0]}
           alt={data.title}
-          className=" object-cover p-2  md:object-cover w-full h-full md:h-full transition-transform duration-300 hover:scale-110"
+          className=" object-cover   md:object-cover w-full h-full md:h-full transition-transform duration-300 hover:scale-110"
         />
       </div>
 
       <div className=" h-23 md:h-40  md:p-4 text-center ">
-        <div className="flex justify-center items-center text-yellow-500">
-          <MdOutlineStarBorderPurple500 size={18} />
+        <div className="flex justify-center items-center gap-1 text-yellow-500">
+          <MdOutlineStarBorderPurple500 className="text-[16px] md:text-[22px] lg:text-[26px]" />
           <span className="text-[#d4af33] font-medium text-[10px] md:text-sm">
             {data.rating}
           </span>
