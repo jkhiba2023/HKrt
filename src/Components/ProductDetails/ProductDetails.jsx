@@ -78,7 +78,7 @@ const ProductDetails = () => {
     <div>
       {productDetails ? (
         <div>
-          <div className="flex justify-around gap-2 mt-5 bg-white w-full h-screen ">
+          <div className="flex-col md:flex md:flex-row justify-around gap-2 mt-5 bg-white w-full md:h-screen ">
             <div className="w-full md:w-[50%]">
               <div className="flex justify-center">
                 <div className="w-1/4 md:w-1/4 mt-8">
@@ -96,15 +96,15 @@ const ProductDetails = () => {
                       className="w-full max-w-[400px] bg-white border border-[#d5af34] my-2"
                     />
                   </div>
-                  <div className="flex justify-center items-center gap-4 mr-15">
+                  <div className="flex justify-center items-center gap-4 md:mr-15">
                     <button
                       onClick={handleAddProduct}
-                      className="bg-[#ff9f00] text-white px-6 py-4 flex justify-center items-center gap-3 rounded-md"
+                      className=" bg-[#ff9f00] text-white p-3 md:px-6 md:py-4 flex justify-center items-center gap-3 rounded-md"
                     >
                       <FaShoppingCart />
                       Add to Cart
                     </button>
-                    <button className="bg-[#fb641b] text-white px-10 py-4 flex justify-center items-center gap-3 rounded-md">
+                    <button className="bg-[#fb641b] text-white p-3 md:px-10 md:py-4 flex justify-center items-center gap-3 rounded-md">
                       <BiPurchaseTagAlt />
                       Buy Now
                     </button>
@@ -112,7 +112,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full md:w-[50%] h-full my-6 md:mt-0 md:flex md:justify-center overflow-visible md:overflow-auto md:scrollbar-hide">
+            <div className="w-full md:w-[50%] h-full px-3 md:p-0 my-6 md:mt-0 md:flex md:justify-center overflow-visible md:overflow-auto scrollbar-hide">
               <div>
                 <h3 className="text-[18px]">
                   {productDetails?.title}
