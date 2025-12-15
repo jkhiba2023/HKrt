@@ -1,28 +1,52 @@
-import Beauty from "../../assets/Beauty.png"
+import Beauty from "../../assets/Beauty.png";
+import Fragrances from "../../assets/Fragrances.png";
+import Furniture from "../../assets/Furniture.png";
+import Groceries from "../../assets/Groceries.png";
+import HomeDecoration from "../../assets/HomeDecoration.png";
+import KitchenAccessories from "../../assets/KitchenAccessories.png";
+import Laptops from "../../assets/Laptops.png";
+import MensShirts from "../../assets/MensShirts.png";
+import MensShoes from "../../assets/MensShoes.png";
+import MensWatches from "../../assets/MensWatches.png";
+import MobileAccessories from "../../assets/MobileAccessories.png";
+import Motorcycle from "../../assets/Motorcycle.png";
+import SkinCare from "../../assets/SkinCare.png";
+import Smartphones from "../../assets/Smartphones.png";
+import SportsAccessories from "../../assets/SportsAccessories.png";
+import Sunglasses from "../../assets/Sunglasses.png";
+import Tablets from "../../assets/Tablets.png";
+import Tops from "../../assets/Tops.png";
+import Vehicle from "../../assets/Vehicle.png";
+import WomensBags from "../../assets/WomensBags.png";
+import WomensDresses from "../../assets/WomensDresses.png";
+import WomensJewellery from "../../assets/WomensJewellery.png";
+import WomensShoes from "../../assets/WomensShoes.png";
+import WomensWatches from "../../assets/WomensWatches.png";
+
 
 export const ImgData = {
-  "Beauty": Beauty,
-  "Fragrances": "../src/assets/Fragrances.png",
-  "Furniture": "../src/assets/Furniture.png",
-  "Groceries": "../src/assets/Groceries.png",
-  "Home Decoration": "../src/assets/HomeDecoration.png",
-  "Kitchen Accessories": "../src/assets/KitchenAccessories.png",
-  "Laptops": "../src/assets/Laptops.png",
-  "Mens Shirts": "../src/assets/MensShirts.png",
-  "Mens Shoes": "../src/assets/MensShoes.png",
-  "Mens Watches": "../src/assets/MensWatches.png",
-  "Mobile Accessories": "../src/assets/MobileAccessories.png",
-  "Motorcycle": "../src/assets/Motorcycle.png",
-  "Skin Care": "../src/assets/SkinCare.png",
-  "Smartphones": "../src/assets/Smartphones.png",
-  "Sports Accessories": "../src/assets/SportsAccessories.png",
-  "Sunglasses": "../src/assets/Sunglasses.png",
-  "Tablets": "../src/assets/Tablets.png",
-  "Tops": "../src/assets/Tops.png",
-  "Vehicle": "../src/assets/Vehicle.png",
-  "Womens Bags": "../src/assets/WomensBags.png",
-  "Womens Dresses": "../src/assets/WomensDresses.png",
-  "Womens Jewellery": "../src/assets/WomensJewellery.png",
-  "Womens Shoes": "../src/assets/WomensShoes.png",
-  "Womens Watches": "../src/assets/WomensWatches.png"
+  Beauty,
+  Fragrances,
+  Furniture,
+  Groceries,
+  "Home Decoration": HomeDecoration,
+  "Kitchen Accessories": KitchenAccessories,
+  Laptops,
+  "Mens Shirts": MensShirts,
+  "Mens Shoes": MensShoes,
+  "Mens Watches": MensWatches,
+  "Mobile Accessories": MobileAccessories,
+  Motorcycle,
+  "Skin Care": SkinCare,
+  Smartphones,
+  "Sports Accessories": SportsAccessories,
+  Sunglasses,
+  Tablets,
+  Tops,
+  Vehicle,
+  "Womens Bags": WomensBags,
+  "Womens Dresses": WomensDresses,
+  "Womens Jewellery": WomensJewellery,
+  "Womens Shoes": WomensShoes,
+  "Womens Watches": WomensWatches,
 };
