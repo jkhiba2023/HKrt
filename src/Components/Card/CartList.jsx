@@ -34,7 +34,7 @@ const CartList = () => {
   }
 
   return (
-    <ul className="w-full max-w-3xl mx-auto bg-white shadow-xl h-screen rounded-lg p-4 space-y-2">
+    <ul className="w-full max-w-3xl mx-auto bg-white shadow-xl rounded-lg p-4 space-y-2">
       <h2 className="flex justify-center font-extrabold text-2xl text-[#d5af34]">
         Cart List
       </h2>
@@ -62,6 +62,9 @@ const CartList = () => {
         <p className="text-xl font-bold text-amber-600">
           ${totalPrice(cartItems)}
         </p>
+      </div>
+      <div className="flex justify-center text-white">
+        <button className="bg-amber-800 px-3 py-2 rounded ">Pay Now</button>
       </div>
     </ul>
   );
