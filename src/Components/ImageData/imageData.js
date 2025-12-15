@@ -1,5 +1,7 @@
+import Beauty from "../../assets/Beauty.png"
+
 export const ImgData = {
-  "Beauty": "../src/assets/Beauty.png",
+  "Beauty": Beauty,
   "Fragrances": "../src/assets/Fragrances.png",
   "Furniture": "../src/assets/Furniture.png",
   "Groceries": "../src/assets/Groceries.png",
