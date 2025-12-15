@@ -10,7 +10,7 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://e-commerce-backened-4fih.onrender.com/categories")
+    fetch(`${import.meta.env.VITE_BASE_URL}/categories`)
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);

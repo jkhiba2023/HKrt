@@ -29,7 +29,7 @@ const ProductDetails = () => {
   }, [navigate]);
 
   useEffect(() => {
-    fetch(`https://e-commerce-backened-4fih.onrender.com/products/${id}`)
+    fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`)
       .then((res) => {
         return res.json();
       })
