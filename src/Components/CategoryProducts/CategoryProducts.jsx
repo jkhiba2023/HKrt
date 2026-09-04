@@ -14,11 +14,12 @@ const CategoryProducts = () => {
       navigate("/login");
     }
   }, [navigate]);
+
   console.log(category);
 
   useEffect(() => {
     fetch(
-      `https://e-commerce-backened-4fih.onrender.com/categories/${category}`
+      `https://e-commerce-backened-4fih.onrender.com/categories/${category}`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -29,22 +30,28 @@ const CategoryProducts = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen items-center">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-center text-[#d4af33]">
-        CATEGOTRY 🛍️ PRODUCTS
+    <div className="min-h-screen bg-gray-100 px-3 py-6 sm:px-5 md:px-8 lg:px-10">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-6 md:mb-8 text-center text-[#d4af33] uppercase">
+        Category 🛍️ Products
       </h2>
 
-      <div className="grid grid-cols-2 items-stretch md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 items-stretch">
         {products.length > 0 ? (
           products.map((data) => {
             return (
-              <Link to={`/products/${data.id}`} key={data.id}>
-                <Card data={data} />
+              <Link
+                to={`/products/${data.id}`}
+                key={data.id}
+                className="w-full flex justify-center"
+              >
+                <div className="w-full max-w-[320px]">
+                  <Card data={data} />
+                </div>
               </Link>
             );
           })
         ) : (
-          <p className="col-span-full text-center text-[#d4af33] text-lg">
+          <p className="col-span-full text-center text-[#d4af33] text-base sm:text-lg md:text-xl py-20">
             Loading products...
           </p>
         )}
@@ -52,4 +59,5 @@ const CategoryProducts = () => {
     </div>
   );
 };
+
 export default CategoryProducts;
